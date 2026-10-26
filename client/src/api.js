@@ -79,13 +79,22 @@ export async function submitApplication(applicationData) {
     const data = await parseResponse(response);
 
     if (!response.ok) {
-      throw new Error(data.error || 'Application submission failed. Please check the entered data.');
+      if (response.status === 400) {
+        throw new Error(data.error || 'Validation error: Please check all required fields.');
+      }
+      if (response.status === 404) {
+        throw new Error(data.error || 'The selected internship was not found or is no longer available.');
+      }
+      if (response.status === 503) {
+        throw new Error(data.error || 'The database is temporarily unavailable. Please try again shortly.');
+      }
+      throw new Error(data.error || `Server error (${response.status}): Unable to submit application.`);
     }
 
     return data;
   } catch (err) {
     if (err.name === 'TypeError' && err.message.includes('fetch')) {
-      throw new Error('Network error: Unable to submit application. Please ensure the backend server is reachable.');
+      throw new Error('Network error: Unable to connect to the backend server. Please verify your connection or try again.');
     }
     throw err;
   }

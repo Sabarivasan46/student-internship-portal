@@ -60,6 +60,7 @@ export default function ApplicationForm({ internship, onApplicationSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
+    setSuccessInfo(null);
 
     if (!validate()) {
       return;
@@ -73,6 +74,8 @@ export default function ApplicationForm({ internship, onApplicationSuccess }) {
         email: formData.email.trim().toLowerCase(),
         rollNumber: formData.rollNumber.trim().toUpperCase(),
         internshipId: internship.id,
+        internship: internship.id,
+        internshipTitle: internship.title,
       };
 
       const result = await submitApplication(payload);
@@ -82,7 +85,7 @@ export default function ApplicationForm({ internship, onApplicationSuccess }) {
         applicationId: result.applicationId || result.application?._id,
       });
 
-      // Clear input fields
+      // Clear input fields only after successful submission
       setFormData({
         studentName: '',
         email: '',
@@ -150,7 +153,7 @@ export default function ApplicationForm({ internship, onApplicationSuccess }) {
             id="studentName"
             name="studentName"
             type="text"
-            placeholder="e.g. Shankar Prakasam"
+            placeholder="Sabarivasan N"
             value={formData.studentName}
             onChange={handleChange}
             className={formErrors.studentName ? 'input-error' : ''}
@@ -170,7 +173,7 @@ export default function ApplicationForm({ internship, onApplicationSuccess }) {
             id="email"
             name="email"
             type="email"
-            placeholder="e.g. shankar@example.com"
+            placeholder="sabarivasan@gmail.com"
             value={formData.email}
             onChange={handleChange}
             className={formErrors.email ? 'input-error' : ''}
@@ -190,7 +193,7 @@ export default function ApplicationForm({ internship, onApplicationSuccess }) {
             id="rollNumber"
             name="rollNumber"
             type="text"
-            placeholder="e.g. 24BCS259"
+            placeholder="24BCS232"
             value={formData.rollNumber}
             onChange={handleChange}
             className={formErrors.rollNumber ? 'input-error' : ''}

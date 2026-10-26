@@ -135,11 +135,11 @@ router.post('/applications', async (req, res, next) => {
   try {
     if (mongoose.connection.readyState !== 1) {
       return res.status(503).json({
-        error: 'Database service is temporarily unavailable. Please try again shortly.',
+        error: 'The database is temporarily unavailable. Please try again shortly.',
       });
     }
 
-    const { studentName, email, rollNumber, internshipId, internship } = req.body;
+    const { studentName, email, rollNumber, internshipId, internship, internshipTitle } = req.body;
     const selectedInternshipId = (internshipId || internship || '').trim();
 
     // Validation
@@ -192,10 +192,12 @@ router.post('/applications', async (req, res, next) => {
     );
 
     if (!matchedInternship) {
-      return res.status(400).json({
-        error: 'Selected internship is invalid or does not exist.',
+      return res.status(404).json({
+        error: 'The selected internship was not found or is no longer available.',
       });
     }
+
+    const finalTitle = (internshipTitle || matchedInternship.title || '').trim();
 
     // Save application to MongoDB
     const application = await Application.create({
@@ -203,7 +205,8 @@ router.post('/applications', async (req, res, next) => {
       email: email.trim().toLowerCase(),
       rollNumber: rollNumber.trim().toUpperCase(),
       internshipId: matchedInternship.id,
-      internshipTitle: matchedInternship.title,
+      internship: matchedInternship.id,
+      internshipTitle: finalTitle || matchedInternship.title,
     });
 
     res.status(201).json({

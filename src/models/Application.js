@@ -32,6 +32,10 @@ const applicationSchema = new mongoose.Schema(
       required: [true, 'Internship ID is required'],
       trim: true,
     },
+    internship: {
+      type: String,
+      trim: true,
+    },
     internshipTitle: {
       type: String,
       required: [true, 'Internship title is required'],
