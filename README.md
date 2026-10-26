@@ -143,7 +143,7 @@ Or run separately:
 ## Deployment Configuration
 
 ### Backend: Render
-- **Repository:** `https://github.com/Shankar-Prakasam/Internship-portal`
+- **Repository:** `https://github.com/Sabarivasan46/student-internship-portal`
 - **Branch:** `main` (or `rollno_v1`)
 - **Root Directory:** `.` (Repository root)
 - **Environment:** `Node`
@@ -156,7 +156,7 @@ Or run separately:
 - **Live URL:** `https://internship-portal-rr66.onrender.com`
 
 ### Frontend: Vercel
-- **Repository:** `https://github.com/Shankar-Prakasam/Internship-portal`
+- **Repository:** `https://github.com/Sabarivasan46/student-internship-portal`
 - **Production Branch:** `main`
 - **Root Directory:** `client`
 - **Framework Preset:** `Vite`

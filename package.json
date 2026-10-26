@@ -18,7 +18,11 @@
     "react",
     "mongodb"
   ],
-  "author": "Shankar-Prakasam",
+  "author": "Sabarivasan46",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sabarivasan46/student-internship-portal.git"
+  },
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
