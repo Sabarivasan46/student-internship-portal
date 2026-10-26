@@ -1,21 +1,27 @@
 {
-  "name": "mern",
+  "name": "internship-portal-server",
   "version": "1.0.0",
-  "description": "NodeJS + Express + React + MongoDB",
-  "main": "index.js",
+  "description": "Student Internship Portal API",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "client": "cd client && npm run dev",
-    "server": "nodemon index.js",
-    "setup": "npm install && cd client && npm install && cd ..",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "server": "nodemon app.js",
+    "client": "npm --prefix client run dev",
+    "dev:all": "concurrently \"npm run server\" \"npm run client\"",
+    "setup": "npm install && npm --prefix client install"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "internship-portal",
+    "mern",
+    "express",
+    "react",
+    "mongodb"
+  ],
+  "author": "Shankar-Prakasam",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^8.0.3"
