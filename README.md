@@ -188,3 +188,12 @@ This has been resolved by:
 4. Capture a screenshot of the green **Application submitted successfully!** banner showing your saved **Application ID**.
 5. Click **Applications** in the top navigation bar.
 6. Capture a screenshot of the **Submitted Applications** table displaying your name, roll number, email, internship title, and MongoDB document ID.
+
+---
+
+## Git & Repository Structure
+- **Origin Repository:** `https://github.com/Sabarivasan46/student-internship-portal.git`
+- **Active Branches:** `rollno_v1` and `main`
+- **Frontend Directory:** `client/` (React + Vite)
+- **Backend Entry:** `app.js` (Express + MongoDB)
+
